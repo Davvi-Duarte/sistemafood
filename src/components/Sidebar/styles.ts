@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.aside`
-  background-color : ${({theme}) => theme.colors.red};
+  background-color : ${({theme}) => theme.colors.purple};
 
   width: 7.75rem;
 
