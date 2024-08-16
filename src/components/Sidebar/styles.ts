@@ -1,9 +1,17 @@
-import styled from "styled-components";
+import styled, { css } from 'styled-components'
 
-export const Container = styled.aside`
-  background-color : ${({theme}) => theme.colors.purple};
+interface ContainerProps {
+  isMenuOpen: boolean
+}
 
-  width: 7.75rem;
+export const Container = styled.aside<ContainerProps>`
+  background-color: ${({ theme }) => theme.colors.purple};
+
+  ${({ isMenuOpen }) =>
+    isMenuOpen
+      ? css`width: 16.3rem;`
+      : css`width: 7.75rem;`
+    }
 
   padding: 2rem 0;
   overflow: hidden;
@@ -11,6 +19,8 @@ export const Container = styled.aside`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  transition: width 0.3s;
 
   button {
     background: none;
@@ -31,8 +41,8 @@ export const Container = styled.aside`
       gap: 1.5rem;
     }
 
-    li{
-      a{
+    li {
+      a {
         width: fit-content;
         position: relative;
         padding-left: 1.875rem;
@@ -43,21 +53,20 @@ export const Container = styled.aside`
         gap: 2rem;
 
         svg {
-          fill: ${({theme}) => theme.colors.white};
+          fill: ${({ theme }) => theme.colors.white};
           width: 4rem;
           height: 4rem;
           transition: fill 0.3s;
         }
 
-        span{
+        span {
           font-size: 1rem;
           font-weight: 500;
           transition: color 0.3s;
         }
 
-        //aplica no prórpio "a"
-        &.active{
-          &::after { //desenhando barra lateral
+        &.active {
+          &::after {
             content: '';
             position: absolute;
             left: 0;
@@ -65,25 +74,22 @@ export const Container = styled.aside`
             bottom: 0;
             transform: translateY(-50%);
 
-            background-color: ${({theme}) => theme.colors.yellow};
+            background-color: ${({ theme }) => theme.colors.yellow};
             width: 5px;
             height: calc(100% + 10px);
 
             border-radius: 0 5px 5px 0;
           }
 
-          svg{
-            fill: ${({theme}) => theme.colors.yellow};;
+          svg {
+            fill: ${({ theme }) => theme.colors.yellow};
           }
 
-          span{
-            color: ${({theme}) => theme.colors.yellow};;
+          span {
+            color: ${({ theme }) => theme.colors.yellow};
           }
-
         }
-
       }
     }
   }
-
 `
